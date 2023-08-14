@@ -1,10 +1,10 @@
 # Fastspeech2 Model using MFA
 
-This repository contains a Fastspeech2 Model implemented using the Montreal Forced Aligner (MFA) for speech synthesis. The model is capable of generating mel-spectrograms from text inputs and can be used to synthesize speech.
+This repository contains a Fastspeech2 Model for 8 Indian languages (male and female both) implemented using the Montreal Forced Aligner (MFA) for speech synthesis. The model is capable of generating mel-spectrograms from text inputs and can be used to synthesize speech.
 
 ## Model Files
 
-The model includes the following files:
+The model for each language includes the following files:
 
 - `config.yaml`: Configuration file for the Fastspeech2 Model.
 - `energy_stats.npz`: Energy statistics for normalization during synthesis.
@@ -25,6 +25,8 @@ conda env create -f environment.yaml
 ```shell
 conda install pytorch torchvision torchaudio cudatoolkit=<your_cuda_version>
 ```
+## Vocoder
+For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder (Link here). Please refer to the documentation of the vocoder you choose for installation and usage instructions.
 
 ## Usage
 Activate the conda environment (check inside environment.yaml file):
@@ -36,28 +38,17 @@ Use the inference file to synthesize speech from text inputs:
 python inference.py --input_text "Your input text here" --language <language> --gender <gender> --output_wav output.wav
 ```
 
-## Vocoder
-For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder (Link here). Please refer to the documentation of the vocoder you choose for installation and usage instructions.
-
 ### Citation
 If you use this Fastspeech2 Model in your research or work, please consider citing:
 
 “
 COPYRIGHT
-2016
-TTS
-Consortium,
-TDIL,
-Meity
-represented by Hema A Murthy & S Umesh, DEPARTMENT OF
-Computer
-Science
+2016 TTS Consortium,
+TDIL, Meity represented by Hema A Murthy & S Umesh,
+DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
 and
-Engineering
-and
-Electrical
-Engineering, IIT Madras. ALL RIGHTS RESERVED”
-"
+ELECTRICAL ENGINEERING,
+IIT MADRAS. ALL RIGHTS RESERVED "
 
 
 
