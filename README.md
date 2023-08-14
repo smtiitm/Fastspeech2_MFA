@@ -21,24 +21,25 @@ The model includes the following files:
 conda env create -f environment.yaml
 ```
 
-1. Install PyTorch separately (you can install the specific version based on your requirements):
-
+2. Install PyTorch separately (you can install the specific version based on your requirements):
+```shell
 conda install pytorch torchvision torchaudio cudatoolkit=<your_cuda_version>
+```
 
-
-Usage
-Activate the conda environment:
-
-conda activate <environment_name>
-
+## Usage
+Activate the conda environment (check inside environment.yaml file):
+```shell
+conda activate tts-fs-hifigan
+```
 Use the inference file to synthesize speech from text inputs:
+```shell
+python inference.py --input_text "Your input text here" --language <language> --gender <gender> --output_wav output.wav
+```
 
-python inference.py --input_text "Your input text here" --output_wav output.wav
+## Vocoder
+For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder (Link here). Please refer to the documentation of the vocoder you choose for installation and usage instructions.
 
-Vocoder
-For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder. Please refer to the documentation of the vocoder you choose for installation and usage instructions.
-
-Citation
+### Citation
 If you use this Fastspeech2 Model in your research or work, please consider citing:
 
 “
@@ -56,9 +57,7 @@ Engineering
 and
 Electrical
 Engineering, IIT Madras. ALL RIGHTS RESERVED”
-
-
-
+"
 
 
 
