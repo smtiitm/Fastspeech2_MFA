@@ -19,7 +19,7 @@ The model includes the following files:
 
 ```shell
 conda env create -f environment.yaml
-
+```
 
 1. Install PyTorch separately (you can install the specific version based on your requirements):
 
