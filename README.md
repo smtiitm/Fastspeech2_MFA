@@ -26,7 +26,7 @@ conda env create -f environment.yaml
 conda install pytorch torchvision torchaudio cudatoolkit=<your_cuda_version>
 ```
 ## Vocoder
-For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder (Link here). Please refer to the documentation of the vocoder you choose for installation and usage instructions.
+For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the HIFIGAN vocoder [HIFIGAN](https://github.com/jik876/hifi-gan). Please refer to the documentation of the vocoder you choose for installation and usage instructions.
 
 ## Usage
 Activate the conda environment (check inside environment.yaml file):
