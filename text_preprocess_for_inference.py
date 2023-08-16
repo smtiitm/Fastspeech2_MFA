@@ -352,7 +352,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/speech/arun/tts/tts_api/text2phone/Tamil_Parser/ssn_parser"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/path/to/Tamil/Parser/tamil_ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -363,9 +363,7 @@ class Phonifier:
                 with open(out_dict_file, "w") as f:
                     f.write(data_str)
             else:
-                # unified_parser_cmd = "phonify_wrapper.sh"
-                
-                # subprocess.run(["bash", unified_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/speech/arun/tts/tts_api/text2phone/"])
+              
                 out_file_dict = os.path.abspath("tmp/out_dict_" + timestamp)
                 from get_phone_mapped_python import TextReplacer
                 
@@ -456,7 +454,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/speech/arun/tts/tts_api/text2phone/Tamil_Parser/ssn_parser"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/path/to/Tamil/Parser/tamil_ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -522,7 +520,7 @@ class TextNormalizer:
     def __init__(self, char_map_location=None, phonifier = Phonifier()):
         self.phonifier = phonifier
         if char_map_location is None:
-            char_map_location = "/speech/arun/tts/tts_api/charmap"
+            char_map_location = "/path/to/charmap/folder"
     
         # this is a static set of cleaning rules to be applied
         self.cleaning_rules = {
