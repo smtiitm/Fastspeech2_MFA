@@ -32,7 +32,7 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 
 ## Usage
 
-Make changes to ** text_preprocess_for_inference.py **. Update folder paths wherever required. 
+Make changes to **text_preprocess_for_inference.py** file. Update folder/file paths wherever required. 
 
 Activate the conda environment (check inside environment.yaml file):
 ```shell
