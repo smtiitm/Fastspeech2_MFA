@@ -2,7 +2,13 @@
 
 This repository contains a Fastspeech2 Model for 8 Indian languages (male and female both) implemented using the Montreal Forced Aligner (MFA) for speech synthesis. The model is capable of generating mel-spectrograms from text inputs and can be used to synthesize speech.
 
-The Repo is large in size: Please download the model which only are needed.
+The Repo is large in size: We have used [Git LFS](https://git-lfs.com/) due to Github's size constraint. Language model files are uploaded using git LFS. so please use:
+
+```
+git lfs fetch --all
+git lfs pull
+```
+to get the original files in your directory. 
 
 ## Model Files
 
