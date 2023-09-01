@@ -10,7 +10,7 @@ from scipy.io.wavfile import write
 from meldataset import MAX_WAV_VALUE
 from env import AttrDict
 import json
-from text_preprocess_w_eng_preproc_out import TTSDurAlignPreprocessor
+from text_preprocess_for_inference import TTSDurAlignPreprocessor
 
 SAMPLING_RATE = 22050
 
