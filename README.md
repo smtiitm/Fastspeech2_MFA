@@ -23,7 +23,12 @@ The model for each language includes the following files:
 conda env create -f environment.yml
 ```
 
-2. Install PyTorch separately (you can install the specific version based on your requirements):
+2.Activate the conda environment (check inside environment.yaml file):
+```shell
+conda activate tts-fs-hifigan
+```
+
+3.  Install PyTorch separately (you can install the specific version based on your requirements):
 ```shell
 conda install pytorch torchvision torchaudio cudatoolkit=<your_cuda_version>
 ```
@@ -33,11 +38,6 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 ## Usage
 
 Make changes to **text_preprocess_for_inference.py** file. Update folder/file paths wherever required. 
-
-Activate the conda environment (check inside environment.yaml file):
-```shell
-conda activate tts-fs-hifigan
-```
 
 Use the inference file to synthesize speech from text inputs:
 ```shell
