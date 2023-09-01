@@ -17,10 +17,10 @@ The model for each language includes the following files:
 
 ## Installation
 
-1. Create a conda environment using the provided `environment.yaml` file:
+1. Create a conda environment using the provided `environment.yml` file:
 
 ```shell
-conda env create -f environment.yaml
+conda env create -f environment.yml
 ```
 
 2. Install PyTorch separately (you can install the specific version based on your requirements):
