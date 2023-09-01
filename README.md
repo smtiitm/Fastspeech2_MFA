@@ -49,7 +49,7 @@ Make changes to **text_preprocess_for_inference.py** and **inference.py** file. 
 
 Use the inference file to synthesize speech from text inputs:
 ```shell
-python inference.py --input_text "Your input text here" --language <language> --gender <gender> --output_wav output.wav
+python inference.py --sample_text "Your input text here" --language <language> --gender <gender> 
 ```
 
 ### Citation
