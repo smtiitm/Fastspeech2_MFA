@@ -57,6 +57,7 @@ dependencies:
     - importlib-metadata==4.13.0
     - importlib-resources==5.10.0
     - indic-num2words==1.0.1
+    - indic_unified_parser==1.0.6
     - inflect==6.0.2
     - ipython==7.34.0
     - itsdangerous==2.1.2
