@@ -213,7 +213,7 @@ feats_extract_conf:
     n_mels: 80
 normalize: global_mvn
 normalize_conf:
-    stats_file: exp/tts_stats_raw_char_None/train/feats_stats.npz
+    stats_file: /complete/path/to/Fastspeech2_MFA/Hindi/male/model/feats_stats.npz
 tts: fastspeech2
 tts_conf:
     adim: 384
@@ -268,7 +268,7 @@ pitch_extract_conf:
     reduction_factor: 1
 pitch_normalize: global_mvn
 pitch_normalize_conf:
-    stats_file: exp/tts_stats_raw_char_None/train/pitch_stats.npz
+    stats_file: /complete/path/to/Fastspeech2_MFA/Hindi/male/model/pitch_stats.npz
 energy_extract: energy
 energy_extract_conf:
     fs: 22050
@@ -278,7 +278,7 @@ energy_extract_conf:
     reduction_factor: 1
 energy_normalize: global_mvn
 energy_normalize_conf:
-    stats_file: exp/tts_stats_raw_char_None/train/energy_stats.npz
+    stats_file: /complete/path/to/Fastspeech2_MFA/Hindi/male/model/energy_stats.npz
 required:
 - output_dir
 - token_list
