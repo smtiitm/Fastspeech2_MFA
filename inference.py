@@ -1,7 +1,7 @@
 import sys
 import os
 #replace the path with your hifigan path to import Generator from models.py 
-sys.path.append("/path/to/the/hifigan")
+sys.path.append("hifigan")
 import argparse
 import torch
 from espnet2.bin.tts_inference import Text2Speech
@@ -16,8 +16,8 @@ SAMPLING_RATE = 22050
 
 def load_hifigan_vocoder(language, gender, device):
     # Load HiFi-GAN vocoder configuration file and generator model for the specified language and gender
-    vocoder_config = f"/path/to/the/vocoder/{gender}/aryan/hifigan/config.json"
-    vocoder_generator = f"/path/to/the/vocoder/{gender}/aryan/hifigan/generator"
+    vocoder_config = f"vocoder/{gender}/aryan/hifigan/config.json"
+    vocoder_generator = f"vocoder/{gender}/aryan/hifigan/generator"
     # Read the contents of the vocoder configuration file
     with open(vocoder_config, 'r') as f:
         data = f.read()
@@ -37,8 +37,8 @@ def load_hifigan_vocoder(language, gender, device):
 
 
 def load_fastspeech2_model(language, gender, device):
-    tts_model = f"/path/to/tts/model/{gender}/{language}/fastspeech2_hs/model.pth"
-    tts_config = f"/path/to/tts/model/{gender}/{language}/fastspeech2_hs/config.yaml"
+    tts_model = f"{language}/{gender}/model/model.pth"
+    tts_config = f"{language}/{gender}/model/config.yaml"
 
     return Text2Speech(train_config=tts_config, model_file=tts_model, device=device)
 
@@ -83,6 +83,6 @@ if __name__ == "__main__":
 
     # Call the text_synthesis function with user provided and preprocessed sample_text
     
-    audio = text_synthesis(preprocessed_text, vocoder, MAX_WAV_VALUE, device)
+    audio = text_synthesis(args.language,args.gender, preprocessed_text, vocoder, MAX_WAV_VALUE, device)
     output_file = f"{args.language}_{args.gender}_output.wav"
     write(output_file, SAMPLING_RATE, audio)
