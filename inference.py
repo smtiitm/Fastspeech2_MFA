@@ -10,6 +10,7 @@ from scipy.io.wavfile import write
 from meldataset import MAX_WAV_VALUE
 from env import AttrDict
 import json
+import yaml
 from text_preprocess_for_inference import TTSDurAlignPreprocessor
 
 SAMPLING_RATE = 22050
@@ -37,8 +38,32 @@ def load_hifigan_vocoder(language, gender, device):
 
 
 def load_fastspeech2_model(language, gender, device):
+    
+    #updating the config.yaml fiel based on language and gender
+    with open(f"{language}/{gender}/model/config.yaml", "r") as file:      
+     config = yaml.safe_load(file)
+    
+    current_working_directory = os.getcwd()
+    feat="model/feats_stats.npz"
+    pitch="model/pitch_stats.npz"
+    energy="model/energy_stats.npz"
+    
+    feat_path=os.path.join(current_working_directory,language,gender,feat)
+    pitch_path=os.path.join(current_working_directory,language,gender,pitch)
+    energy_path=os.path.join(current_working_directory,language,gender,energy)
+
+    
+    config["normalize_conf"]["stats_file"]  = feat_path
+    config["pitch_normalize_conf"]["stats_file"]  = pitch_path
+    config["energy_normalize_conf"]["stats_file"]  = energy_path
+        
+    with open(f"{language}/{gender}/model/config.yaml", "w") as file:
+        yaml.dump(config, file)
+    
     tts_model = f"{language}/{gender}/model/model.pth"
     tts_config = f"{language}/{gender}/model/config.yaml"
+    
+    
     return Text2Speech(train_config=tts_config, model_file=tts_model, device=device)
 
 def text_synthesis(language, gender, sample_text, vocoder, MAX_WAV_VALUE, device):
