@@ -36,7 +36,7 @@ conda activate tts-fs-hifigan
 
 3.  Install PyTorch separately (you can install the specific version based on your requirements):
 ```shell
-conda install pytorch torchvision torchaudio cudatoolkit=<your_cuda_version>
+conda install pytorch torchvision torchaudio cudatoolkit
 ```
 ## Vocoder
 For generating WAV files from mel-spectrograms, you can use a vocoder of your choice. One popular option is the [HIFIGAN](https://github.com/jik876/hifi-gan) vocoder (Clone this repo and put it in the current working directory). Please refer to the documentation of the vocoder you choose for installation and usage instructions. 
