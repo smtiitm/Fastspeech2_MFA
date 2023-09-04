@@ -38,7 +38,9 @@ def load_hifigan_vocoder(language, gender, device):
 
 def load_fastspeech2_model(language, gender, device):
     tts_model = f"{language}/{gender}/model/model.pth"
+    print('TTTTTTSSSSSSSSSS MODEL',tts_model)
     tts_config = f"{language}/{gender}/model/config.yaml"
+    print('TTTTTTSSSSSSSSSS CONFIGGGGGGGGGGGGGGGGGG',tts_config)
 
     return Text2Speech(train_config=tts_config, model_file=tts_model, device=device)
 
@@ -80,9 +82,10 @@ if __name__ == "__main__":
 
     # Preprocess the sample text
     preprocessed_text, phrases = preprocessor.preprocess(args.sample_text, args.language, args.gender)
+    preprocessed_text = " ".join(preprocessed_text)
 
     # Call the text_synthesis function with user provided and preprocessed sample_text
     
-    audio = text_synthesis(args.language,args.gender, preprocessed_text, vocoder, MAX_WAV_VALUE, device)
+    audio = text_synthesis(args.language, args.gender, preprocessed_text, vocoder, MAX_WAV_VALUE, device)
     output_file = f"{args.language}_{args.gender}_output.wav"
     write(output_file, SAMPLING_RATE, audio)
