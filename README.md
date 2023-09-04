@@ -49,8 +49,6 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 Make changes to **text_preprocess_for_inference.py** and **inference.py** file. Update folder/file paths wherever required.
 
 
-Also, Make chnages to **config.yml** file for each language (update the full/absolute path of `energy_stats.npz`, `feats_stats.npz` and `pitch_stats.npz`).  
-
 Use the inference file to synthesize speech from text inputs:
 ```shell
 python inference.py --sample_text "Your input text here" --language <language> --gender <gender> 
