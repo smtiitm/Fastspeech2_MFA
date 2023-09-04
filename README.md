@@ -52,6 +52,7 @@ Use the inference file to synthesize speech from text inputs:
 ```shell
 python inference.py --sample_text "Your input text here" --language <language> --gender <gender> 
 ```
+Also, Make chnages to **config.yml** file for each language (update the full/absolute path of energy_stats.npz, feats_stats.npz and pitch_stats.npz).  
 
 ### Citation
 If you use this Fastspeech2 Model in your research or work, please consider citing:
