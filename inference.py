@@ -38,10 +38,7 @@ def load_hifigan_vocoder(language, gender, device):
 
 def load_fastspeech2_model(language, gender, device):
     tts_model = f"{language}/{gender}/model/model.pth"
-    print('TTTTTTSSSSSSSSSS MODEL',tts_model)
     tts_config = f"{language}/{gender}/model/config.yaml"
-    print('TTTTTTSSSSSSSSSS CONFIGGGGGGGGGGGGGGGGGG',tts_config)
-
     return Text2Speech(train_config=tts_config, model_file=tts_model, device=device)
 
 def text_synthesis(language, gender, sample_text, vocoder, MAX_WAV_VALUE, device):
