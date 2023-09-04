@@ -304,33 +304,7 @@ class Phonifier:
         words = set((" ".join(text)).split(" "))
         #print(f"words test: {words}")
         non_dict_words = []
-        # eng_words = []
-        # decimal_words = []
-        # float_words = []
-        # if language == 'english':
-        #     for word in words:
-        #         if word.isnumeric():
-        #             decimal_words.append(word)
-        #         elif self.__is_float(word):
-        #             float_words.append(word)
-        #         elif word not in self.phone_dictionary[language]:
-        #             non_dict_words.append(word)
-        #         else:
-        #             pass
-        # elif language in self.phone_dictionary:
-        #     for word in words:
-        #         if word.isalpha():
-        #             eng_words.append(word)
-        #         elif word.isnumeric():
-        #             decimal_words.append(word)
-        #         elif self.__is_float(word):
-        #             float_words.append(word)
-        #         elif word not in self.phone_dictionary[language]:
-        #             non_dict_words.append(word)
-        #         else:
-        #             pass  # ignore words that are not in the dictionary
-        # else:
-        #     non_dict_words = words
+       
         
         if language in self.phone_dictionary:
             for word in words:
