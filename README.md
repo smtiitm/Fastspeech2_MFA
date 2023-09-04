@@ -31,7 +31,7 @@ conda env create -f environment.yml
 
 2.Activate the conda environment (check inside environment.yaml file):
 ```shell
-conda activate tts-fs-hifigan
+conda activate tts-mfa-hifigan
 ```
 
 3.  Install PyTorch separately (you can install the specific version based on your requirements):
