@@ -13,7 +13,9 @@ import subprocess
 import shutil
 from multiprocessing import Process
 import traceback
-
+from get_phone_mapped_python import TextReplacer
+from indic_unified_parser.uparser import wordparse
+                
 #imports of dependencies from environment.yml
 from num_to_words import num_to_word
 from g2p_en import G2p
@@ -86,7 +88,7 @@ class TextCleaner:
 class Phonifier:
     def __init__(self, dict_location=None):
         if dict_location is None:
-            dict_location = "/path/to/phone_dict"
+            dict_location = "phone_dict"  #add/path/to/phone_dict here if any changes
         self.dict_location = dict_location
 
         self.phone_dictionary = {}
@@ -252,7 +254,7 @@ class Phonifier:
         }
 
         # Multilingual support for OOV characters
-        oov_map_json_file = 'multilingualcharmap.json'
+        oov_map_json_file = 'multilingualcharmap.json' #add/path/to/json file here if any changes
         with open(oov_map_json_file, 'r') as oov_file:
             self.oov_map = json.load(oov_file)
 
@@ -326,7 +328,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/path/to/Tamil/Parser/tamil_ssn_parser"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"]) #add/path/to/ssn_parser here if any changes
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -339,10 +341,7 @@ class Phonifier:
             else:
               
                 out_file_dict = os.path.abspath("tmp/out_dict_" + timestamp)
-                from get_phone_mapped_python import TextReplacer
-                
-                from indic_unified_parser.uparser import wordparse
-                
+           
                 text_replacer=TextReplacer()
                 # def write_output_to_file(output_text, file_path):
                 #     with open(file_path, 'w') as f:
@@ -428,7 +427,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/path/to/Tamil/Parser/tamil_ssn_parser"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"]) #add/path/to/ssn_parser here if any changes
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
