@@ -13,9 +13,7 @@ import subprocess
 import shutil
 from multiprocessing import Process
 import traceback
-from get_phone_mapped_python import TextReplacer
-from indic_unified_parser.uparser import wordparse
-                
+
 #imports of dependencies from environment.yml
 from num_to_words import num_to_word
 from g2p_en import G2p
@@ -88,7 +86,7 @@ class TextCleaner:
 class Phonifier:
     def __init__(self, dict_location=None):
         if dict_location is None:
-            dict_location = "phone_dict"  #add/path/to/phone_dict here if any changes
+            dict_location = "phone_dict"
         self.dict_location = dict_location
 
         self.phone_dictionary = {}
@@ -254,7 +252,7 @@ class Phonifier:
         }
 
         # Multilingual support for OOV characters
-        oov_map_json_file = 'multilingualcharmap.json' #add/path/to/json file here if any changes
+        oov_map_json_file = 'multilingualcharmap.json'
         with open(oov_map_json_file, 'r') as oov_file:
             self.oov_map = json.load(oov_file)
 
@@ -304,15 +302,42 @@ class Phonifier:
     def __phonify(self, text, language, gender):
         # text is expected to be a list of strings
         words = set((" ".join(text)).split(" "))
-        print(f"words test: {words}")
+        #print(f"words test: {words}")
         non_dict_words = []
-        
+        # eng_words = []
+        # decimal_words = []
+        # float_words = []
+        # if language == 'english':
+        #     for word in words:
+        #         if word.isnumeric():
+        #             decimal_words.append(word)
+        #         elif self.__is_float(word):
+        #             float_words.append(word)
+        #         elif word not in self.phone_dictionary[language]:
+        #             non_dict_words.append(word)
+        #         else:
+        #             pass
+        # elif language in self.phone_dictionary:
+        #     for word in words:
+        #         if word.isalpha():
+        #             eng_words.append(word)
+        #         elif word.isnumeric():
+        #             decimal_words.append(word)
+        #         elif self.__is_float(word):
+        #             float_words.append(word)
+        #         elif word not in self.phone_dictionary[language]:
+        #             non_dict_words.append(word)
+        #         else:
+        #             pass  # ignore words that are not in the dictionary
+        # else:
+        #     non_dict_words = words
         
         if language in self.phone_dictionary:
             for word in words:
                 # print(f"word: {word}")
                 if word not in self.phone_dictionary[language] and (language == "english" or (not self.__is_english_word(word))):
                     non_dict_words.append(word)
+                    #print('INSIDE IF CONDITION OF ADDING WORDS')
         else:
             non_dict_words = words
         print(f"word not in dict: {non_dict_words}")
@@ -328,7 +353,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"]) #add/path/to/ssn_parser here if any changes
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -339,9 +364,14 @@ class Phonifier:
                 with open(out_dict_file, "w") as f:
                     f.write(data_str)
             else:
-              
+                # unified_parser_cmd = "phonify_wrapper.sh"
+                
+                # subprocess.run(["bash", unified_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "/speech/arun/tts/tts_api/text2phone/"])
                 out_file_dict = os.path.abspath("tmp/out_dict_" + timestamp)
-           
+                from get_phone_mapped_python import TextReplacer
+                
+                from indic_unified_parser.uparser import wordparse
+                
                 text_replacer=TextReplacer()
                 # def write_output_to_file(output_text, file_path):
                 #     with open(file_path, 'w') as f:
@@ -351,22 +381,19 @@ class Phonifier:
                     parsed_word = wordparse(word, 0, 0, 1)
                     parsed_output_list.append(parsed_word)
                 replaced_output_list = [text_replacer.apply_replacements(parsed_word) for parsed_word in parsed_output_list]
-                with open(out_dict_file, 'w') as file:
+                with open(out_dict_file, 'w', encoding='utf-8') as file:
                     for original_word, formatted_word in zip(non_dict_words, replaced_output_list):
-                        file.write(f"{original_word}\t{formatted_word}")
-                        print(f"{original_word}\t{formatted_word}")
-                
-
-                    # transformed_word = apply_transformations(parsed_word)
-                    # print('PYTHON PARSED WORDS', transformed_word)
-                  
+                        line = f"{original_word}\t{formatted_word}\n"
+                        file.write(line)
+                        print(line, end='') 
                   
 
             try:
                 
                 df = pd.read_csv(out_dict_file, delimiter="\t", header=None, dtype=str)
+                #print('DATAFRAME OUTPUT FILE', df.head())
                 new_dict = df.dropna().set_index(0).to_dict('dict')[1]
-                print("new dict",new_dict)
+                #print("new dict",new_dict)
                 if language not in self.phone_dictionary:
                     self.phone_dictionary[language] = new_dict
                 else:
@@ -427,7 +454,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"]) #add/path/to/ssn_parser here if any changes
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -493,7 +520,7 @@ class TextNormalizer:
     def __init__(self, char_map_location=None, phonifier = Phonifier()):
         self.phonifier = phonifier
         if char_map_location is None:
-            char_map_location = "/path/to/charmap/folder"
+            char_map_location = "charmap"
     
         # this is a static set of cleaning rules to be applied
         self.cleaning_rules = {
@@ -743,9 +770,9 @@ class TTSDurAlignPreprocessor:
         text = self.text_normalizer.normalize(text, language)
         # print(text)
         phrasified_text = TextPhrasifier.phrasify(text)
-        print("phrased",phrasified_text)
+        #print("phrased",phrasified_text)
         phonified_text = self.phonifier.phonify(phrasified_text, language, gender)
-        print("phonetext",phonified_text)
+        #print("phonetext",phonified_text)
         phonified_text = self.post_processor.textProcesor(phonified_text)
         print(phonified_text)
         return phonified_text, phrasified_text
