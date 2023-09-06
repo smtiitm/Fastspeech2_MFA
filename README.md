@@ -61,7 +61,7 @@ If you use this Fastspeech2 Model in your research or work, please consider citi
 “
 COPYRIGHT
 2016 TTS Consortium,
-TDIL, Meity represented by Hema A Murthy & S Umesh,
+Bhashini, Meity represented by Hema A Murthy & S Umesh,
 DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
 and
 ELECTRICAL ENGINEERING,
