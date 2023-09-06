@@ -2,7 +2,14 @@
 
 This repository contains a Fastspeech2 Model for 8 Indian languages (male and female both) implemented using the Montreal Forced Aligner (MFA) for speech synthesis. The model is capable of generating mel-spectrograms from text inputs and can be used to synthesize speech.
 
-The Repo is large in size: We have used [Git LFS](https://git-lfs.com/) due to Github's size constraint (please install git LFS from the link `sudo apt-get install git-lfs`). Language model files are uploaded using git LFS. so please use:
+The Repo is large in size: We have used [Git LFS](https://git-lfs.com/) due to Github's size constraint (please install latest git LFS from the link, we have provided the current one below).
+```
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.python.sh | bash
+sudo apt-get install git-lfs
+git lfs install
+```
+
+Language model files are uploaded using git LFS. so please use:
 
 ```
 git lfs fetch --all
