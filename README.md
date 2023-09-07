@@ -62,7 +62,7 @@ Use the inference file to synthesize speech from text inputs:
 python inference.py --sample_text "Your input text here" --language <language> --gender <gender> 
 ```
 
-Example:
+**Example:**
 
 ```
 python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male 
