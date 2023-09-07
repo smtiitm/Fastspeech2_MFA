@@ -55,12 +55,18 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 
 The directory paths are Relative. (Make changes to **text_preprocess_for_inference.py** and **inference.py** file. Update folder/file paths wherever required.)
 
+Please give language/gender in small cases and sample text between quotes.
 
 Use the inference file to synthesize speech from text inputs:
 ```shell
 python inference.py --sample_text "Your input text here" --language <language> --gender <gender> 
 ```
 
+**Example:**
+
+```
+python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male 
+```
 
 ### Citation
 If you use this Fastspeech2 Model in your research or work, please consider citing:
