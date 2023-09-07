@@ -65,7 +65,7 @@ python inference.py --sample_text "Your input text here" --language <language> -
 Example:
 
 ```
-python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male` 
+python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male 
 ```
 
 ### Citation
