@@ -38,7 +38,7 @@ conda env create -f environment.yml
 
 2.Activate the conda environment (check inside environment.yaml file):
 ```shell
-conda activate tts-mfa-hifigan
+conda activate tts-hs-hifigan
 ```
 
 3.  Install PyTorch separately (you can install the specific version based on your requirements):
@@ -53,7 +53,7 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 
 ## Usage
 
-Make changes to **text_preprocess_for_inference.py** and **inference.py** file. Update folder/file paths wherever required.
+The directory paths are Relative. ( But if needed, Make changes to **text_preprocess_for_inference.py** and **inference.py** file, Update folder/file paths wherever required.)
 
 
 Use the inference file to synthesize speech from text inputs:

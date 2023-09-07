@@ -1,4 +1,4 @@
-name: tts-mfa-hifigan
+name: tts-hs-hifigan
 channels:
   - defaults
 dependencies:
@@ -124,4 +124,4 @@ dependencies:
     - webvtt-py==0.4.6
     - werkzeug==2.2.2
     - zipp==3.10.0
-prefix: /speech/Apps/Flask_app_env/conda_dir/envs/tts-mfa-hifigan
+prefix: /speech/Apps/Flask_app_env/conda_dir/envs/tts-hs-hifigan
