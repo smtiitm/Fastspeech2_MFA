@@ -111,7 +111,7 @@ if __name__ == "__main__":
     
     audio = text_synthesis(args.language, args.gender, preprocessed_text, vocoder, MAX_WAV_VALUE, device)
     if args.output_file:
-        output_file = f"{args.output_file}/{args.language}_{args.gender}_output.wav"
+        output_file = f"{args.output_file}"
     else:
         output_file = f"{args.language}_{args.gender}_output.wav"
 
