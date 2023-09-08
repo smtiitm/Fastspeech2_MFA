@@ -55,19 +55,19 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 
 The directory paths are Relative. ( But if needed, Make changes to **text_preprocess_for_inference.py** and **inference.py** file, Update folder/file paths wherever required.)
 
-**Please give language/gender in small cases and sample text between quotes. Output argument is optional; the provided path will be used to store the output file else it'll be stored in the working directory.** 
+**Please give language/gender in small cases and sample text between quotes. Output argument is optional; the provide name will be used for the output file.** 
 
 Use the inference file to synthesize speech from text inputs:
 ```shell
-python inference.py --sample_text "Your input text here" --language <language> --gender <gender> --output_file <folder path to store file>
+python inference.py --sample_text "Your input text here" --language <language> --gender <gender> --output_file <file_name.wav OR path/to/file_name.wav>
 ```
 
 **Example:**
 
 ```
-python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male --output_file hindi
+python inference.py --sample_text "श्रीलंका और पाकिस्तान में खेला जा रहा एशिया कप अब तक का सबसे विवादित टूर्नामेंट होता जा रहा है।" --language hindi --gender male --output_file male_hindi_output.wav
 ```
-The file will be stored as `hindi_male_output.wav` and will be inside `hindi/hindi_male_output.wav`. If **--output_file** argument is not given it will be stored in the current working directory.
+The file will be stored as `male_hindi_output.wav` and will be inside current working directory. If **--output_file** argument is not given it will be stored as `<language>_<gender>_output.wav` in the current working directory.
 
 
 ### Citation
