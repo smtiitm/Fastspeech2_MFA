@@ -94,6 +94,8 @@ if __name__ == "__main__":
     parser.add_argument("--language", type=str, required=True, help="Language (e.g., hindi)")
     parser.add_argument("--gender", type=str, required=True, help="Gender (e.g., female)")
     parser.add_argument("--sample_text", type=str, required=True, help="Text to be synthesized")
+    parser.add_argument("--output_file", type=str, default="", help="Output WAV file path")
+
     args = parser.parse_args()
     # Set the device
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -106,8 +108,11 @@ if __name__ == "__main__":
     preprocessed_text, phrases = preprocessor.preprocess(args.sample_text, args.language, args.gender)
     preprocessed_text = " ".join(preprocessed_text)
 
-    # Call the text_synthesis function with user provided and preprocessed sample_text
     
     audio = text_synthesis(args.language, args.gender, preprocessed_text, vocoder, MAX_WAV_VALUE, device)
-    output_file = f"{args.language}_{args.gender}_output.wav"
+    if args.output_file:
+        output_file = f"{args.output_file}/{args.language}_{args.gender}_output.wav"
+    else:
+        output_file = f"{args.language}_{args.gender}_output.wav"
+
     write(output_file, SAMPLING_RATE, audio)
