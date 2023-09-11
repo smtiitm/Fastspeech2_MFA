@@ -55,7 +55,7 @@ For generating WAV files from mel-spectrograms, you can use a vocoder of your ch
 
 The directory paths are Relative. (Make changes to **text_preprocess_for_inference.py** and **inference.py** file. Update folder/file paths wherever required.)
 
-**Please give language/gender in small cases and sample text between quotes. Output argument is optional; the provide name will be used for the output file.** 
+**Please give language starting with capital letter and gender in small case and sample text between quotes. Output argument is optional; the provided name will be used for the output file.** 
 
 Use the inference file to synthesize speech from text inputs:
 ```shell
