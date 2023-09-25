@@ -103,7 +103,7 @@ if __name__ == "__main__":
     # Load the HiFi-GAN vocoder with dynamic language and gender
     vocoder = load_hifigan_vocoder(args.language, args.gender, device)
     
-    if args.language == "urdu" or "punjabi":
+    if args.language == "urdu" or args.language == "punjabi":
             preprocessor = CharTextPreprocessor()
     else:
             preprocessor = TTSDurAlignPreprocessor()
