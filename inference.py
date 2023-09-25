@@ -11,7 +11,7 @@ from meldataset import MAX_WAV_VALUE
 from env import AttrDict
 import json
 import yaml
-from text_preprocess_for_inference import TTSDurAlignPreprocessor
+from text_preprocess_for_inference import TTSDurAlignPreprocessor, CharTextPreprocessor
 
 SAMPLING_RATE = 22050
 
@@ -102,7 +102,11 @@ if __name__ == "__main__":
 
     # Load the HiFi-GAN vocoder with dynamic language and gender
     vocoder = load_hifigan_vocoder(args.language, args.gender, device)
-    preprocessor = TTSDurAlignPreprocessor()
+    
+    if args.language == "urdu" or "punjabi":
+            preprocessor = CharTextPreprocessor()
+    else:
+            preprocessor = TTSDurAlignPreprocessor()
 
     # Preprocess the sample text
     preprocessed_text, phrases = preprocessor.preprocess(args.sample_text, args.language, args.gender)
