@@ -834,7 +834,7 @@ class TTSPreprocessor:
         self.text_phrasefier = text_phrasefier
 
     def preprocess(self, text, language, gender):
-        text = text.strip()
+        #text = text.strip()
         text = self.text_cleaner.clean(text)
         # text = self.text_normalizer.insert_space(text)
         text = self.text_normalizer.num2text(text, language)
