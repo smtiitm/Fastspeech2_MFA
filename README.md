@@ -43,7 +43,7 @@ conda activate tts-hs-hifigan
 
 3.  Install PyTorch separately (you can install the specific version based on your requirements):
 ```shell
-conda install pytorch torchvision cudatoolkit
+conda install pytorch cudatoolkit
 pip install torchaudio
 pip install numpy==1.23.0
 ```
