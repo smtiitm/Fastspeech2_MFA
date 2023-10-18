@@ -712,12 +712,22 @@ class DurAlignTextProcessor:
         # this is a static set of cleaning rules to be applied
         self.cleaning_rules = {
             " +" : "",
-            "^" : "$",
+           "^" : "$",
             "$" : ".",
         }
-
+        self.cleaning_rules_English = {
+            " +" : "",
+            "$" : ".",
+        }
     def textProcesor(self, text):
         for key, replacement in self.cleaning_rules.items():
+            for idx in range(0,len(text)):
+                text[idx] = re.sub(key, replacement, text[idx])
+
+        return text
+    
+    def textProcesorForEnglish(self, text):
+        for key, replacement in self.cleaning_rules_English.items():
             for idx in range(0,len(text)):
                 text[idx] = re.sub(key, replacement, text[idx])
 
@@ -759,7 +769,7 @@ class TTSDurAlignPreprocessor:
         phrasified_text = TextPhrasifier.phrasify(text)
         #print("phrased",phrasified_text)
         phonified_text = self.phonifier.phonify(phrasified_text, language, gender)
-        #print("phonetext",phonified_text)
+        print("phonetext",phonified_text)
         phonified_text = self.post_processor.textProcesor(phonified_text)
         print(phonified_text)
         return phonified_text, phrasified_text
@@ -807,7 +817,8 @@ class CharTextPreprocessor:
 class CharTextPreprocessor_VTT:
     def __init__(self,
                 text_cleaner = TextCleaner(),
-                text_normalizer=TextNormalizer()):
+                text_normalizer=TextNormalizer()
+                ):
         self.text_cleaner = text_cleaner
         self.text_normalizer = text_normalizer
 
@@ -827,20 +838,25 @@ class TTSPreprocessor:
                 text_cleaner = TextCleaner(),
                 text_normalizer=TextNormalizer(),
                 phonifier = Phonifier(),
-                text_phrasefier = TextPhrasifier()):
+                text_phrasefier = TextPhrasifier(),
+                post_processor = DurAlignTextProcessor()):
         self.text_cleaner = text_cleaner
         self.text_normalizer = text_normalizer
         self.phonifier = phonifier
         self.text_phrasefier = text_phrasefier
-
+        self.post_processor = post_processor
+        
     def preprocess(self, text, language, gender):
-        #text = text.strip()
+        text = text.strip()
         text = self.text_cleaner.clean(text)
         # text = self.text_normalizer.insert_space(text)
         text = self.text_normalizer.num2text(text, language)
         text = self.text_normalizer.normalize(text, language)
         phrasified_text = TextPhrasifier.phrasify(text)
         phonified_text = self.phonifier.phonify(phrasified_text, language, gender)
+        print(phonified_text)
+        phonified_text = self.post_processor.textProcesorForEnglish(phonified_text)
+        print(phonified_text)
         return phonified_text, phrasified_text
 
 class TTSPreprocessor_VTT:
