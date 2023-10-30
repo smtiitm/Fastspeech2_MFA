@@ -328,7 +328,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "text2phone"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
@@ -427,7 +427,7 @@ class Phonifier:
 
             if(language == 'tamil'):
                 tamil_parser_cmd = "tamil_parser.sh"
-                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "text2phone"])
+                subprocess.run(["bash", tamil_parser_cmd, non_dict_words_file, out_dict_file, timestamp, "ssn_parser"])
             elif(language == 'english'):
                 phn_out_dict = {}
                 for i in range(0,len(non_dict_words)):
