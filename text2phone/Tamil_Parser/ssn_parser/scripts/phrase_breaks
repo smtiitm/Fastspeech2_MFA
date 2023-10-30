@@ -1,4 +1,0 @@
-#!/bin/tcsh -f
-
-if ($# != 2) then
-
