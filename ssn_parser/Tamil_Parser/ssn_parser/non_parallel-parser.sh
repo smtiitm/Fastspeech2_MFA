@@ -41,13 +41,13 @@ bash get_phone_mapped_text.sh ${phone_file_name}
 sed -i 's/"//g' ${phone_file_name}
 sed -i 's/ //g' ${phone_file_name}
 
-echo $PWD
+#echo $PWD
 
 words_str=`cat ${phone_file_name}.words`
 if [[ words_str != "" ]];
 then
 paste -d'\t' ${phone_file_name}.words ${phone_file_name} > ${output_file_name}
-echo ${output_file_name}
+#echo ${output_file_name}
 else
 touch ${output_file_name}
 fi
@@ -55,10 +55,10 @@ fi
 err_str=`cat ${phone_file_name}.err`
 if [[ $err_str != "" ]];
 then
-echo $err_str
+#echo $err_str
 bash phonify_wrapper.sh ${parser_path}/${phone_file_name}.err ${output_file_name}.err.out ${rand_num} ${curr_path}/ssn_parser/
 cat ${output_file_name}.err.out >> ${output_file_name}
-echo ${output_file_name}
+#echo ${output_file_name}
 fi
 
 cd ${curr_path}
