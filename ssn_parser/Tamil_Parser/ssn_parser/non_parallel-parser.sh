@@ -56,7 +56,7 @@ err_str=`cat ${phone_file_name}.err`
 if [[ $err_str != "" ]];
 then
 echo $err_str
-bash phonify_wrapper.sh ${parser_path}/${phone_file_name}.err ${output_file_name}.err.out ${rand_num} /var/www/html/IITM_TTS/E2E_TTS_FS2/text_proc/text2phone/
+bash phonify_wrapper.sh ${parser_path}/${phone_file_name}.err ${output_file_name}.err.out ${rand_num} ${curr_path}/ssn_parser/
 cat ${output_file_name}.err.out >> ${output_file_name}
 echo ${output_file_name}
 fi
